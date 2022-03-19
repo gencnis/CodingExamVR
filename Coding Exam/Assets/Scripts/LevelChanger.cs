@@ -44,8 +44,11 @@ public class LevelChanger : MonoBehaviour
         {
 
             //countdownText.text = ("Out of time!");
-            SceneManager.LoadScene(0);
-            DisableCanvas();
+            int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+            if (SceneManager.sceneCountInBuildSettings > nextSceneIndex)
+            {
+                SceneManager.LoadScene(nextSceneIndex);
+            }
         }
     }
 

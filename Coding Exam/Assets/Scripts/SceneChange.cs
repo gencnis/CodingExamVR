@@ -5,9 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class SceneChange : MonoBehaviour
 {
-
-    public bool changeable;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -22,9 +19,10 @@ public class SceneChange : MonoBehaviour
 
     public void ChangeScene()
     {
-        if (changeable)
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        if (SceneManager.sceneCountInBuildSettings > nextSceneIndex)
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(nextSceneIndex);
         }
     }
 }
